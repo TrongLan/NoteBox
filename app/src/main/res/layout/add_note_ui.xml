@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:background="@color/coal"
+  android:padding="15sp"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+  
+  <EditText
+    android:background="@drawable/section_in_main"
+    android:layout_width="match_parent"
+    app:layout_constraintHeight_percent="0.1"
+    android:paddingLeft="10sp"
+    android:paddingRight="10sp"
+    android:paddingTop="5sp"
+    android:paddingBottom="5sp"
+    android:inputType="text"
+    android:hint="Tiêu đề"
+    android:ems="50"
+    android:id="@+id/title_input"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.448"
+    android:layout_height="0sp"/>
+  
+  <EditText
+    android:hint="Nội dung ghi chú"
+    app:layout_constraintHeight_percent="0.7"
+    android:paddingLeft="10sp"
+    android:paddingRight="10sp"
+    android:paddingTop="15sp"
+    android:paddingBottom="15sp"
+    android:layout_width="match_parent"
+    android:layout_height="0sp"
+    android:background="@drawable/section_in_main"
+    android:inputType="textMultiLine"
+    android:gravity="start|top"
+    android:ems="10"
+    android:id="@+id/editTextTextMultiLine"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintHorizontal_bias="0.482"
+    app:layout_constraintTop_toBottomOf="@+id/title_input"
+    android:layout_marginTop="20dp"
+    app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+    app:layout_constraintVertical_bias="0.0"/>
+  
+  <LinearLayout
+    app:layout_constraintHeight_percent="0.1"
+    android:layout_height="0sp"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:id="@+id/linearLayout3">
+    
+    
+    <LinearLayout
+      android:layout_weight="2"
+      android:background="@drawable/section_in_main"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:orientation="horizontal">
+      
+      <EditText
+        android:hint="Thời gian nhắc nhở"
+        android:layout_weight="1"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        android:paddingTop="5sp"
+        android:paddingBottom="5sp"
+        android:background="@drawable/section_in_main"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:inputType="time"
+        android:ems="10"
+        android:id="@+id/editTextTime"/>
+      
+      <ImageButton
+        android:background="@drawable/section_in_main"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingLeft="25sp"
+        android:paddingRight="25sp"
+        app:srcCompat="@drawable/ic_baseline_alarm_24"
+        android:id="@+id/imageButton"
+        android:layout_weight="1"/>
+    </LinearLayout>
+    
+    <Space
+      android:layout_width="20sp"
+      android:layout_height="wrap_content"/>
+  
+    <Button
+      android:layout_weight="1"
+      android:text="Lưu"
+      app:strokeColor="@color/supreme_yellow"
+      app:strokeWidth="3sp"
+      android:backgroundTint="@color/coal"
+      android:textColor="@color/supreme_yellow"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:id="@+id/button"
+      />
+  </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
