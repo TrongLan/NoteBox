@@ -27,7 +27,7 @@
   <style name="dialogTheme" parent="Theme.AppCompat.DayNight.Dialog">
     <item name="colorAccent">@color/wku_red</item>
     <item name="android:textColorPrimary">@color/yellow_iris</item>
-    <item name="android:textColorSecondary">@color/supreme_yellow</item>
-    <item name="android:background">@color/coal</item>
+    <item name="android:textColorSecondary">@color/minion_yellow</item>
+    <item name="android:background">@color/pure_light_blue</item>
   </style>
 </resources>

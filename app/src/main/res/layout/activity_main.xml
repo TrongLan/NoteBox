@@ -7,7 +7,7 @@
   android:layout_height="match_parent"
   android:paddingLeft="10sp"
   android:paddingRight="10sp"
-  android:background="@color/coal"
+  android:background="@color/pure_light_blue"
   tools:context=".MainActivity">
   
   <TextView
@@ -61,11 +61,11 @@
     android:clickable="true"
     app:srcCompat="@drawable/ic_baseline_create_48"
     app:fabSize="normal"
-    android:backgroundTint="@color/supreme_yellow"
+    android:backgroundTint="@color/minion_yellow"
     app:maxImageSize="24sp"
-    app:backgroundTint="@color/coal"
+    app:backgroundTint="@color/pure_light_blue"
     app:borderWidth="10sp"
-    app:tint="@color/coal"
+    app:tint="@color/pure_light_blue"
     android:id="@+id/floatingActionButton"
     app:layout_constraintTop_toTopOf="parent"
     android:focusable="true"

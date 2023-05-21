@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:background="@color/coal"
+  android:background="@color/pure_light_blue"
   android:padding="15sp"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
@@ -38,7 +38,7 @@
     android:inputType="textMultiLine"
     android:gravity="start|top"
     android:ems="10"
-    android:id="@+id/editTextTextMultiLine"
+    android:id="@+id/content_input"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintHorizontal_bias="0.482"
@@ -77,7 +77,7 @@
         android:layout_height="match_parent"
         android:inputType="time"
         android:ems="10"
-        android:id="@+id/editTextTime"/>
+        android:id="@+id/remind_time_input"/>
       
       <ImageButton
         android:background="@drawable/section_in_main"
@@ -97,13 +97,13 @@
     <Button
       android:layout_weight="1"
       android:text="Lưu"
-      app:strokeColor="@color/supreme_yellow"
+      app:strokeColor="@color/minion_yellow"
       app:strokeWidth="3sp"
-      android:backgroundTint="@color/coal"
-      android:textColor="@color/supreme_yellow"
+      android:backgroundTint="@color/pure_light_blue"
+      android:textColor="@color/minion_yellow"
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
-      android:id="@+id/button"
+      android:id="@+id/note_save_button"
       />
   </LinearLayout>
 

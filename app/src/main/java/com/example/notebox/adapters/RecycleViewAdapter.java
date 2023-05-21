@@ -33,8 +33,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<NoteItemViewHolder>
   public void onBindViewHolder(@NonNull @NotNull NoteItemViewHolder holder, int position) {
     holder.noteTitle.setText(noteList.get(position).getTitle());
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-      holder.noteCreateAt.setText(noteList.get(position).getCreatedDateTime().format(formatter));
+      holder.noteCreateAt.setText(noteList.get(position).getCreatedDateTime());
     }
   }
 

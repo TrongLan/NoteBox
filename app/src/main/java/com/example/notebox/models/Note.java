@@ -1,14 +1,12 @@
 package com.example.notebox.models;
 
-import java.time.LocalDateTime;
-
 public class Note {
   private Long id;
   private String title;
   private String content;
-  private LocalDateTime createdDateTime;
-  private LocalDateTime updatedDateTime;
-  private LocalDateTime remindingDateTime;
+  private String createdDateTime;
+  private String updatedDateTime;
+  private String remindingDateTime;
 
   public Note() {}
 
@@ -16,23 +14,15 @@ public class Note {
       Long id,
       String title,
       String content,
-      LocalDateTime createdDateTime,
-      LocalDateTime updatedDateTime,
-      LocalDateTime remindingDateTime) {
+      String createdDateTime,
+      String updatedDateTime,
+      String remindingDateTime) {
     this.id = id;
     this.title = title;
     this.content = content;
     this.createdDateTime = createdDateTime;
     this.updatedDateTime = updatedDateTime;
     this.remindingDateTime = remindingDateTime;
-  }
-
-  public LocalDateTime getUpdatedDateTime() {
-    return updatedDateTime;
-  }
-
-  public void setUpdatedDateTime(LocalDateTime updatedDateTime) {
-    this.updatedDateTime = updatedDateTime;
   }
 
   public Long getId() {
@@ -59,19 +49,27 @@ public class Note {
     this.content = content;
   }
 
-  public LocalDateTime getCreatedDateTime() {
+  public String getCreatedDateTime() {
     return createdDateTime;
   }
 
-  public void setCreatedDateTime(LocalDateTime createdDateTime) {
+  public void setCreatedDateTime(String createdDateTime) {
     this.createdDateTime = createdDateTime;
   }
 
-  public LocalDateTime getRemindingDateTime() {
+  public String getUpdatedDateTime() {
+    return updatedDateTime;
+  }
+
+  public void setUpdatedDateTime(String updatedDateTime) {
+    this.updatedDateTime = updatedDateTime;
+  }
+
+  public String getRemindingDateTime() {
     return remindingDateTime;
   }
 
-  public void setRemindingDateTime(LocalDateTime remindingDateTime) {
+  public void setRemindingDateTime(String remindingDateTime) {
     this.remindingDateTime = remindingDateTime;
   }
 }

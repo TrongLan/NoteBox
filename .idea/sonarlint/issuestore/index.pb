@@ -7,7 +7,7 @@ n
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 v
 Fapp/src/main/java/com/example/notebox/adapters/NoteItemViewHolder.java,2\7\27552fb9e7594db65215ebf77fbf2441a7212a68
-f
-6app/src/main/java/com/example/notebox/models/Note.java,e\b\eb88871577c285294824ec6196499b338da1c72e
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+v
+Fapp/src/main/java/com/example/notebox/adapters/RecycleViewAdapter.java,1\8\18f3fbbc2c5c3f77d81bb0c0bc166a18d682b233
