@@ -2,9 +2,11 @@ package com.example.notebox;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
   private FloatingActionButton button;
 
   private NoteSQLiteHelper noteSQLiteHelper;
+  private boolean doubleBackToExitPressedOnce = false;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,17 @@ public class MainActivity extends AppCompatActivity {
     fabClickEventProcess();
   }
 
+  @Override
+  public void onBackPressed() {
+    if (doubleBackToExitPressedOnce) {
+      super.onBackPressed();
+      finishAffinity();
+    }
+    this.doubleBackToExitPressedOnce = true;
+    Toast.makeText(this, "Nhấn back lần nữa để thoát", Toast.LENGTH_SHORT).show();
+
+    new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
+  }
 
   // Xử lý sự kiện ấn nút thêm ghi chú
   private void fabClickEventProcess() {
@@ -59,6 +73,4 @@ public class MainActivity extends AppCompatActivity {
           startActivity(intent);
         });
   }
-
-
 }

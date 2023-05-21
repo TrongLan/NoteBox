@@ -10,6 +10,7 @@ import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.notebox.configuration.ValidationMessage;
 import com.example.notebox.models.Note;
 import com.example.notebox.sql.NoteSQLiteHelper;
 import java.time.LocalDate;
@@ -39,8 +40,12 @@ public class AddNoteActivity extends AppCompatActivity {
     setRemindTimeButton = findViewById(R.id.imageButton);
     setRemindTimeButton.setOnClickListener(v -> openDateDialog(LocalDateTime.now()));
 
-    this.saveNoteEventProcess(
-        new NoteSQLiteHelper(getApplicationContext()));
+    this.saveNoteEventProcess(new NoteSQLiteHelper(getApplicationContext()));
+  }
+
+  @Override
+  public void onBackPressed() {
+    super.onBackPressed();
   }
 
   @RequiresApi(api = Build.VERSION_CODES.O)
@@ -73,6 +78,7 @@ public class AddNoteActivity extends AppCompatActivity {
             (view, hourOfDay, minute) -> {
               LocalTime localTime = LocalTime.of(hourOfDay, minute, 0);
               DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+              remindTimeInput = findViewById(R.id.remind_time_input);
               remindTimeInput.setText(String.format("%s %s", date, formatter.format(localTime)));
             },
             dateTime.getHour(),
@@ -87,10 +93,10 @@ public class AddNoteActivity extends AppCompatActivity {
     contentInput = findViewById(R.id.content_input);
     remindTimeInput = findViewById(R.id.remind_time_input);
     Note note = new Note();
-    note.setTitle(titleInput.getText().toString());
-    note.setContent(contentInput.getText().toString());
-    note.setRemindingDateTime(remindTimeInput.getText().toString());
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
+    note.setTitle(titleInput.getText().toString().trim());
+    note.setContent(contentInput.getText().toString().trim());
+    note.setRemindingDateTime(remindTimeInput.getText().toString().trim());
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     LocalDateTime now = LocalDateTime.now();
     note.setCreatedDateTime(now.format(formatter));
     note.setUpdatedDateTime(now.format(formatter));
@@ -98,13 +104,68 @@ public class AddNoteActivity extends AppCompatActivity {
   }
 
   @RequiresApi(api = Build.VERSION_CODES.O)
+  private boolean isValid(Note note) {
+    if (note.getTitle().isBlank()) {
+      Toast.makeText(
+              this,
+              String.format(ValidationMessage.BLANK.getContent(), "Tiêu đề"),
+              Toast.LENGTH_SHORT)
+          .show();
+      return false;
+    }
+    if (note.getTitle().length() > 30) {
+      Toast.makeText(
+              this,
+              String.format(ValidationMessage.INVALID_LENGTH.getContent(), "Tiêu đề", 30),
+              Toast.LENGTH_SHORT)
+          .show();
+      return false;
+    }
+    if (note.getTitle().isBlank()) {
+      Toast.makeText(
+              this,
+              String.format(ValidationMessage.BLANK.getContent(), "Nội dung ghi chú"),
+              Toast.LENGTH_SHORT)
+          .show();
+      return false;
+    }
+    if (!note.getRemindingDateTime().isBlank()) {
+      DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+      try {
+        LocalDateTime parse = LocalDateTime.parse(note.getRemindingDateTime(), format);
+        if (parse.isBefore(LocalDateTime.now())) {
+          Toast.makeText(
+                  this,
+                  String.format(ValidationMessage.INVALID_DATETIME.getContent(), "nhắc nhở"),
+                  Toast.LENGTH_SHORT)
+              .show();
+          return false;
+        }
+      } catch (Exception e) {
+        Toast.makeText(
+                this,
+                String.format(ValidationMessage.INVALID_DATETIME.getContent(), "nhắc nhở"),
+                Toast.LENGTH_SHORT)
+            .show();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.O)
   private void saveNoteEventProcess(NoteSQLiteHelper sqLiteHelper) {
     noteSaveButton = findViewById(R.id.note_save_button);
     noteSaveButton.setOnClickListener(
         v -> {
-          sqLiteHelper.addNote(this.mapToNoteObject());
-          Intent intent = new Intent(AddNoteActivity.this, MainActivity.class);
-          startActivity(intent);
+          Note newNote = this.mapToNoteObject();
+          if (isValid(newNote)) {
+            long newId = sqLiteHelper.addNote(newNote);
+            Toast.makeText(this, "Đã lưu thành công ghi chú của bạn", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(AddNoteActivity.this, NoteDetailActivity.class);
+            intent.putExtra("newId", newId);
+            startActivity(intent);
+          }
         });
   }
 }

@@ -1,5 +1,6 @@
 package com.example.notebox.sql;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -44,15 +45,33 @@ public class NoteSQLiteHelper extends SQLiteOpenHelper {
   }
 
   // Thêm ghi chú
-  public void addNote(Note newNote) {
+  public long addNote(Note newNote) {
+    ContentValues contentValues = new ContentValues();
+    contentValues.put("TITLE", newNote.getTitle());
+    contentValues.put("CONTENT", newNote.getContent());
+    contentValues.put("CREATE_DATETIME", newNote.getCreatedDateTime());
+    contentValues.put("UPDATE_DATETIME", newNote.getUpdatedDateTime());
+    contentValues.put("REMIND_DATETIME", newNote.getRemindingDateTime());
+
     SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-    Object[] args = {
-      newNote.getTitle(),
-      newNote.getContent(),
-      newNote.getCreatedDateTime(),
-      newNote.getUpdatedDateTime(),
-      newNote.getRemindingDateTime()
-    };
-    sqLiteDatabase.execSQL(SQLCommand.INSERT_TABLE_NOTE.getCommand(), args);
+    return sqLiteDatabase.insert("NOTE", null, contentValues);
+  }
+
+  // Tìm bản ghi theo id
+  public Note getById(long id) {
+    Note note = new Note();
+    SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+    String selection = "id = ?";
+    String[] args = {String.valueOf(id)};
+    Cursor cursor = sqLiteDatabase.query("NOTE", null, selection, args, null, null, null);
+    while (cursor.moveToNext()) {
+      note.setId(cursor.getLong(0));
+      note.setTitle(cursor.getString(1));
+      note.setContent(cursor.getString(2));
+      note.setCreatedDateTime(cursor.getString(3));
+      note.setUpdatedDateTime(cursor.getString(4));
+      note.setRemindingDateTime(cursor.getString(5));
+    }
+    return note;
   }
 }

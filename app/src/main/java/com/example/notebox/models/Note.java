@@ -1,6 +1,8 @@
 package com.example.notebox.models;
 
-public class Note {
+import java.io.Serializable;
+
+public class Note implements Serializable {
   private Long id;
   private String title;
   private String content;

@@ -6,6 +6,7 @@
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/floating_button_border.xml" value="0.1" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/ic_baseline_alarm_24.xml" value="0.1725" />
+        <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.2595" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/ic_baseline_note_add_24.xml" value="0.1" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/ic_baseline_save_36.xml" value="0.243" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
@@ -14,8 +15,11 @@
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/section_in_main.xml" value="0.1" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/splash_screen_logo.xml" value="0.126" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/test.xml" value="0.1" />
+        <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/text_view_line.xml" value="0.2545" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/layout/activity_main.xml" value="0.2722222222222222" />
+        <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/layout/activity_note_detail.xml" value="0.14583333333333334" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/layout/add_note_ui.xml" value="0.1" />
+        <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/layout/note_detail_ui.xml" value="0.176" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/layout/note_item_view.xml" value="0.21105072463768115" />
       </map>
     </option>
