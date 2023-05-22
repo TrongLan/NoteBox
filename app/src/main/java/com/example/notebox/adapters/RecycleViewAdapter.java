@@ -33,7 +33,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<NoteItemViewHolder>
   public void onBindViewHolder(@NonNull @NotNull NoteItemViewHolder holder, int position) {
     holder.noteTitle.setText(noteList.get(position).getTitle());
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-      holder.noteCreateAt.setText(noteList.get(position).getCreatedDateTime());
+      holder.noteUpdatedAt.setText(noteList.get(position).getUpdatedDateTime());
     }
   }
 

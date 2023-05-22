@@ -10,11 +10,11 @@ import org.jetbrains.annotations.NotNull;
 public class NoteItemViewHolder extends RecyclerView.ViewHolder {
 
   TextView noteTitle;
-  TextView noteCreateAt;
+  TextView noteUpdatedAt;
 
   public NoteItemViewHolder(@NonNull @NotNull View itemView) {
     super(itemView);
     noteTitle = itemView.findViewById(R.id.title);
-    noteCreateAt = itemView.findViewById(R.id.create_at);
+    noteUpdatedAt = itemView.findViewById(R.id.create_at);
   }
 }

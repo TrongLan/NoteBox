@@ -1,8 +1,12 @@
 package com.example.notebox.models;
 
+import android.os.Build;
+import androidx.annotation.RequiresApi;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class Note implements Serializable {
+public class Note implements Serializable, Comparable<Note> {
   private Long id;
   private String title;
   private String content;
@@ -73,5 +77,22 @@ public class Note implements Serializable {
 
   public void setRemindingDateTime(String remindingDateTime) {
     this.remindingDateTime = remindingDateTime;
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.O)
+  @Override
+  public int compareTo(Note o) {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    LocalDateTime updateTimeOfThis = LocalDateTime.parse(this.getUpdatedDateTime(), formatter);
+    LocalDateTime updateTimeOfO = LocalDateTime.parse(o.getUpdatedDateTime(), formatter);
+    if (updateTimeOfThis.isEqual(updateTimeOfO)) {
+      return 0;
+    } else {
+      if (updateTimeOfThis.isAfter(updateTimeOfO)) {
+        return -1;
+      } else {
+        return 1;
+      }
+    }
   }
 }

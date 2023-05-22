@@ -34,6 +34,7 @@ public class NoteSQLiteHelper extends SQLiteOpenHelper {
     Cursor cursor = sqLiteDatabase.query("NOTE", null, null, null, null, null, null);
     while (cursor.moveToNext()) {
       Note note = new Note();
+      note.setId(cursor.getLong(0));
       note.setTitle(cursor.getString(1));
       note.setContent(cursor.getString(2));
       note.setCreatedDateTime(cursor.getString(3));
@@ -73,5 +74,11 @@ public class NoteSQLiteHelper extends SQLiteOpenHelper {
       note.setRemindingDateTime(cursor.getString(5));
     }
     return note;
+  }
+
+  // Xóa ghi chú theo id
+  public void deleteById(long id) {
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+    sqLiteDatabase.delete("NOTE", "id=?", new String[] {String.valueOf(id)});
   }
 }
