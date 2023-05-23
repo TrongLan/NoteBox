@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -13,15 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.notebox.adapters.NoteItemClickable;
 import com.example.notebox.adapters.RecycleViewAdapter;
 import com.example.notebox.models.Note;
 import com.example.notebox.sql.NoteSQLiteHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.Collections;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NoteItemClickable {
   private RecyclerView recyclerView;
   private ImageView emptyNoteIcon;
   private FloatingActionButton button;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     } else {
       emptyNoteIcon.setVisibility(View.VISIBLE);
     }
-    RecycleViewAdapter adapter = new RecycleViewAdapter(getApplicationContext(), noteList);
+    RecycleViewAdapter adapter = new RecycleViewAdapter(getApplicationContext(), noteList, this);
     recyclerView.setAdapter(adapter);
 
     ItemTouchHelper itemTouchHelper =
@@ -70,7 +71,9 @@ public class MainActivity extends AppCompatActivity {
       finishAffinity();
     }
     this.doubleBackToExitPressedOnce = true;
-    Toast.makeText(this, "Nhấn back lần nữa để thoát", Toast.LENGTH_SHORT).show();
+    Toast toast = Toast.makeText(this, "Nhấn back lần nữa để thoát", Toast.LENGTH_SHORT);
+    toast.setGravity(Gravity.CENTER, 0, 0);
+    toast.show();
 
     new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
   }
@@ -112,8 +115,11 @@ public class MainActivity extends AppCompatActivity {
             (dialogInterface, i) -> {
               Note n = noteList.remove(position);
               noteSQLiteHelper.deleteById(n.getId());
-              Toast.makeText(MainActivity.this, "Xóa ghi chú thành công", Toast.LENGTH_SHORT)
-                  .show();
+              Toast toast =
+                  Toast.makeText(MainActivity.this, "Xóa ghi chú thành công", Toast.LENGTH_SHORT);
+              toast.setGravity(Gravity.CENTER, 0, 0);
+              toast.show();
+              adapter.notifyDataSetChanged();
               dialogInterface.dismiss();
             });
         builder.setNegativeButton(
@@ -135,5 +141,12 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
       }
     };
+  }
+
+  @Override
+  public void onClick(Note n) {
+    Intent intent = new Intent(MainActivity.this, NoteDetailActivity.class);
+    intent.putExtra("newId", n.getId());
+    startActivity(intent);
   }
 }

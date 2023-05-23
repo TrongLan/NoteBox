@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.notebox.R;
 import com.example.notebox.models.Note;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,9 +15,13 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<NoteItemViewHolder>
   Context context;
   List<Note> noteList;
 
-  public RecycleViewAdapter(Context applicationContext, List<Note> noteList) {
+  NoteItemClickable noteItemClickable;
+
+  public RecycleViewAdapter(
+      Context applicationContext, List<Note> noteList, NoteItemClickable noteItemClickable) {
     this.context = applicationContext;
     this.noteList = noteList;
+    this.noteItemClickable = noteItemClickable;
   }
 
   @NonNull
@@ -35,6 +38,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<NoteItemViewHolder>
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
       holder.noteUpdatedAt.setText(noteList.get(position).getUpdatedDateTime());
     }
+    holder.linearLayout.setOnClickListener(v -> noteItemClickable.onClick(noteList.get(position)));
   }
 
   @Override

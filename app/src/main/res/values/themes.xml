@@ -2,8 +2,8 @@
   <!-- Base application theme. -->
   <style name="Theme.NoteBox" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     <!-- Primary brand color. -->
-    <item name="colorPrimary">@color/purple_500</item>
-    <item name="colorPrimaryVariant">@color/purple_700</item>
+    <item name="colorPrimary">@color/minion_yellow</item>
+    <item name="colorPrimaryVariant">@color/pure_light_blue</item>
     <item name="colorOnPrimary">@color/white</item>
     <!-- Secondary brand color. -->
     <item name="colorSecondary">@color/teal_200</item>
@@ -12,6 +12,7 @@
     <!-- Status bar color. -->
     <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     <!-- Customize your theme here. -->
+    <item name="android:textColor">@color/black</item>
   </style>
   
   <!-- Splash Screen -->
@@ -26,8 +27,8 @@
   
   <style name="dialogTheme" parent="Theme.AppCompat.DayNight.Dialog">
     <item name="colorAccent">@color/wku_red</item>
-    <item name="android:textColorPrimary">@color/yellow_iris</item>
-    <item name="android:textColorSecondary">@color/minion_yellow</item>
-    <item name="android:background">@color/pure_light_blue</item>
+    <item name="android:textColorPrimary">#0055A4</item>
+    <item name="android:textColorSecondary">@color/pure_light_blue</item>
+    <item name="android:background">@color/minion_yellow</item>
   </style>
 </resources>

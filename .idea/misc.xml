@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/down_icon.xml" value="0.141" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/floating_button_border.xml" value="0.1" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/ic_baseline_alarm_24.xml" value="0.1725" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.2595" />
@@ -20,7 +21,7 @@
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/layout/activity_note_detail.xml" value="0.14583333333333334" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/layout/add_note_ui.xml" value="0.1" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/layout/confirm_delete_dialog_view.xml" value="0.264" />
-        <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/layout/note_detail_ui.xml" value="0.176" />
+        <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/layout/note_detail_ui.xml" value="0.264" />
         <entry key="..\:/PTiT/Nam4-Ky2/LapTrinhDiDong/NoteBoxApp/app/src/main/res/layout/note_item_view.xml" value="0.21105072463768115" />
       </map>
     </option>

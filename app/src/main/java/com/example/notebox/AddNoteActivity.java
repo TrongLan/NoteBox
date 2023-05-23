@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.WindowManager;
 import android.widget.*;
 import androidx.annotation.Nullable;
@@ -106,47 +107,52 @@ public class AddNoteActivity extends AppCompatActivity {
   @RequiresApi(api = Build.VERSION_CODES.O)
   private boolean isValid(Note note) {
     if (note.getTitle().isBlank()) {
-      Toast.makeText(
+      Toast toast =
+          Toast.makeText(
               this,
               String.format(ValidationMessage.BLANK.getContent(), "Tiêu đề"),
-              Toast.LENGTH_SHORT)
-          .show();
+              Toast.LENGTH_SHORT);
+      toast.setGravity(Gravity.CENTER, 0, 0);
+      toast.show();
       return false;
     }
     if (note.getTitle().length() > 30) {
-      Toast.makeText(
+      Toast toast =
+          Toast.makeText(
               this,
               String.format(ValidationMessage.INVALID_LENGTH.getContent(), "Tiêu đề", 30),
-              Toast.LENGTH_SHORT)
-          .show();
+              Toast.LENGTH_SHORT);
+      toast.setGravity(Gravity.CENTER, 0, 0);
+      toast.show();
       return false;
     }
     if (note.getTitle().isBlank()) {
-      Toast.makeText(
+      Toast toast =
+          Toast.makeText(
               this,
               String.format(ValidationMessage.BLANK.getContent(), "Nội dung ghi chú"),
-              Toast.LENGTH_SHORT)
-          .show();
+              Toast.LENGTH_SHORT);
+      toast.setGravity(Gravity.CENTER, 0, 0);
+      toast.show();
       return false;
     }
     if (!note.getRemindingDateTime().isBlank()) {
       DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+      Toast toast =
+          Toast.makeText(
+              this,
+              String.format(ValidationMessage.INVALID_DATETIME.getContent(), "nhắc nhở"),
+              Toast.LENGTH_SHORT);
+      toast.setGravity(Gravity.CENTER, 0, 0);
       try {
         LocalDateTime parse = LocalDateTime.parse(note.getRemindingDateTime(), format);
         if (parse.isBefore(LocalDateTime.now())) {
-          Toast.makeText(
-                  this,
-                  String.format(ValidationMessage.INVALID_DATETIME.getContent(), "nhắc nhở"),
-                  Toast.LENGTH_SHORT)
-              .show();
+          toast.setGravity(Gravity.CENTER, 0, 0);
+          toast.show();
           return false;
         }
       } catch (Exception e) {
-        Toast.makeText(
-                this,
-                String.format(ValidationMessage.INVALID_DATETIME.getContent(), "nhắc nhở"),
-                Toast.LENGTH_SHORT)
-            .show();
+        toast.show();
         return false;
       }
     }
@@ -161,7 +167,10 @@ public class AddNoteActivity extends AppCompatActivity {
           Note newNote = this.mapToNoteObject();
           if (isValid(newNote)) {
             long newId = sqLiteHelper.addNote(newNote);
-            Toast.makeText(this, "Đã lưu thành công ghi chú của bạn", Toast.LENGTH_SHORT).show();
+            Toast toast =
+                Toast.makeText(this, "Đã lưu thành công ghi chú của bạn", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
             Intent intent = new Intent(AddNoteActivity.this, NoteDetailActivity.class);
             intent.putExtra("newId", newId);
             startActivity(intent);
