@@ -28,6 +28,7 @@ public class NoteDetailActivity extends AppCompatActivity {
   private Float transitionYAxis = 100F;
   private boolean menuOpen = false;
   private NoteSQLiteHelper noteSQLiteHelper;
+  private long needUpdateNoteId;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,9 @@ public class NoteDetailActivity extends AppCompatActivity {
 
     editButton.setOnClickListener(
         v -> {
-          Toast.makeText(this, "Edit button clicked", Toast.LENGTH_SHORT).show();
+          Intent intent = new Intent(NoteDetailActivity.this, UpdateNoteActivity.class);
+          intent.putExtra("needUpdateId", this.needUpdateNoteId);
+          startActivity(intent);
         });
 
     deleteButton.setOnClickListener(
@@ -88,11 +91,7 @@ public class NoteDetailActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(NoteDetailActivity.this, MainActivity.class);
                 startActivity(intent1);
               });
-          builder.setNegativeButton(
-              "Hủy bỏ",
-              (dialogInterface, i) -> {
-                dialogInterface.dismiss();
-              });
+          builder.setNegativeButton("Hủy bỏ", (dialogInterface, i) -> dialogInterface.dismiss());
 
           AlertDialog alertDialog = builder.create();
           alertDialog.setOnShowListener(
@@ -133,6 +132,7 @@ public class NoteDetailActivity extends AppCompatActivity {
   private void displayNoteData() {
     Intent intent = getIntent();
     long newId = intent.getLongExtra("newId", 0);
+    this.needUpdateNoteId = newId;
     noteSQLiteHelper = new NoteSQLiteHelper(getApplicationContext());
     Note note = noteSQLiteHelper.getById(newId);
 

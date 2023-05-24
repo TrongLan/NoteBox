@@ -18,15 +18,14 @@
     android:inputType="text"
     android:hint="Tiêu đề"
     android:ems="50"
-    android:id="@+id/title_input"
+    android:id="@+id/title_input_update"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.448"
     android:layout_height="0sp"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
-    app:layout_constraintBottom_toTopOf="@+id/content_input"/>
+    app:layout_constraintBottom_toTopOf="@+id/content_input_update"/>
   
   <EditText
     android:hint="Nội dung ghi chú"
@@ -41,11 +40,11 @@
     android:inputType="textMultiLine"
     android:gravity="start|top"
     android:ems="10"
-    android:id="@+id/content_input"
+    android:id="@+id/content_input_update"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintHorizontal_bias="0.482"
-    app:layout_constraintTop_toBottomOf="@+id/title_input"
+    app:layout_constraintTop_toBottomOf="@+id/title_input_update"
     android:layout_marginTop="8dp"
     app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
     app:layout_constraintVertical_bias="0.0"
@@ -81,7 +80,7 @@
         android:layout_height="match_parent"
         android:inputType="time"
         android:ems="10"
-        android:id="@+id/remind_time_input"/>
+        android:id="@+id/remind_time_input_update"/>
       
       <ImageButton
         android:background="@drawable/section_in_main"
@@ -90,14 +89,14 @@
         android:paddingLeft="25sp"
         android:paddingRight="25sp"
         app:srcCompat="@drawable/ic_baseline_alarm_24"
-        android:id="@+id/imageButton"
+        android:id="@+id/imageButtonUpdate"
         android:layout_weight="1"/>
     </LinearLayout>
     
     <Space
       android:layout_width="20sp"
       android:layout_height="wrap_content"/>
-  
+    
     <Button
       android:layout_weight="1"
       android:text="Lưu"
@@ -107,7 +106,7 @@
       android:textColor="@color/minion_yellow"
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
-      android:id="@+id/note_save_button"
+      android:id="@+id/note_update_button"
       />
   </LinearLayout>
 

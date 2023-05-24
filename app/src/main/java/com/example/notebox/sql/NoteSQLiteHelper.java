@@ -81,4 +81,15 @@ public class NoteSQLiteHelper extends SQLiteOpenHelper {
     SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     sqLiteDatabase.delete("NOTE", "id=?", new String[] {String.valueOf(id)});
   }
+
+  // Cập nhật ghi chú
+  public void updateNote(long id, Note note) {
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+    ContentValues contentValues = new ContentValues();
+    contentValues.put("TITLE", note.getTitle());
+    contentValues.put("CONTENT", note.getContent());
+    contentValues.put("UPDATE_DATETIME", note.getUpdatedDateTime());
+    contentValues.put("REMIND_DATETIME", note.getRemindingDateTime());
+    sqLiteDatabase.update("NOTE", contentValues, "id=?", new String[] {String.valueOf(id)});
+  }
 }
